@@ -2,9 +2,12 @@ var React = require("react");
 
 class Header extends React.Component {
   render() {
-    console.log("Layout jsx: ");
+    console.log("Header jsx: ");
 
     return (
+      <html>
+      <head />
+      <body>
       <header>
           <nav>
             <a href=""><img id="logo" src="./logo_transparent.png" width="100px"/></a>
@@ -18,6 +21,9 @@ class Header extends React.Component {
             </form>
           </div>
       </header>
+      {this.props.main};
+      </body>
+      </html>
     );
   }
 }

@@ -18,7 +18,7 @@ module.exports = (allModels) => {
 
       if (hashUserName === loggedIn) {
 
-          response.render('submitExpenseForm', {username: username});
+          response.render('./submitExpenseForm', {username: username});
           
       } else {
         response.status(401).render('./unauthorised');
