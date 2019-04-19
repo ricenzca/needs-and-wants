@@ -15,8 +15,8 @@ module.exports = (dbPoolInstance) => {
                       INNER JOIN users
                       ON expenses.user_id=users.id
                       WHERE users.username='${data.username}'
+                      AND date_trunc('day', date) > (current_date - INTERVAL '30 days')
                       ORDER BY expenses.date DESC
-                      LIMIT 10
                       ;`;
 
     dbPoolInstance.query(queryString, (error, result) => {

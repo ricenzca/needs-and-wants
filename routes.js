@@ -22,6 +22,9 @@ module.exports = (app, allModels) => {
   app.get('/login', loginController.loginRequestHandler);
   app.post('/login', loginController.loginControllerCallback);
 
+  const logoutController = require('./controllers/logout')(allModels);
+  app.post('/logout', logoutController.logoutRequestHandler);
+
   const userHomeController = require('./controllers/userHome')(allModels);
   app.get('/:username', userHomeController.userHomeRequestHandler);
   

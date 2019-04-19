@@ -22,8 +22,11 @@ class UserHome extends React.Component {
         </tbody>
       );
     })
-    const path = `/${listExpenseResult[0].username}/expense/new`;
-    console.log(path);
+    const logExpensePath = `/${listExpenseResult[0].username}/expense/new`;
+    console.log("logExpensePath", logExpensePath);
+
+    const logoutPath = `/logout`;
+    console.log("logoutPath", logoutPath);
 
     return (
       <html>
@@ -32,9 +35,14 @@ class UserHome extends React.Component {
         <script src="./scripts/script.js"></script>
         </head>
         <body style={{textAlign: 'left'}}>
-          <form method="get" action={path} style={{position: 'absolute', right: '20px', zIndex: '1'}}>
+          <div style={{position: 'absolute', right: '20px', zIndex: '1'}}>
+          <form method="get" action={logExpensePath} style={{display: 'inline-block'}}>
            <input type="submit" value="Log new expense"/>
           </form>
+          <form method="post" action={logoutPath} style={{display: 'inline-block'}}>
+           <input type="submit" value="Logout"/>
+          </form>
+          </div>
           <h3 style={{margin: '10px 5px', position: 'relative', top: '0'}}>Expense Records</h3>
           <div style={{display: 'flex', justifyContent: 'space-around'}}>
             <table>
@@ -49,7 +57,7 @@ class UserHome extends React.Component {
               {table}
             </table>
             <div style={{width: '400px'}}>
-            <canvas id="myChart" width="400" height="400"></canvas>
+            <canvas id="monthlyExpenseBarChart" width="400" height="400"></canvas>
             </div>
           </div>
         </body>

@@ -32,7 +32,7 @@ function plotChart () {
 	})
 	console.log("Values");
 	console.log(values);
-	var canvas = document.getElementById('myChart').getContext('2d');
+	var canvas = document.getElementById('monthlyExpenseBarChart').getContext('2d');
 	var myChart = new Chart(canvas, {
 	    type: 'bar',
 	    data: {
@@ -72,10 +72,18 @@ function plotChart () {
 	    	},
 	    	title: {
 	    		display: true,
-	    		text: 'Monthly Expense (last 12 months)'
+	    		text: ['Monthly Expense','(past 12 months)'],
+	    		fontColor: 'black',
+	    		fontSize: 15,
+	    		padding: 20
 	    	},
 	        scales: {
 	            yAxes: [{
+	            	scaleLabel: {
+	            	        display: true,
+	            	        labelString: 'Dollars ($)',
+	            	        rotation: 90
+	            	      },
 	                ticks: {
 	                    beginAtZero: true
 	                }
