@@ -12,12 +12,12 @@ class MainPage extends React.Component {
         <meta name="author" content="T.SHL" />
         <title>Needs & Wants</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossOrigin="anonymous" />
-        <link rel="stylesheet" type="text/css" href="home.css" />
+        <link rel="stylesheet" type="text/css" href="./stylesheets/home.css" />
       </head>
       <body>
           <header style={{display: 'flex'}}>
               <nav style={{display: 'inline-block'}}>
-                <a href="/"><img id="logo" src="./logo_transparent.png" width="100px"/></a>
+                <a href="/"><img id="logo" src="./images/logo_transparent.png" alt="Needs and Wants logo" width="100px"/></a>
                 <a href="#what">What are we?</a>
                 <a href="#how">Getting started</a>
               </nav>

@@ -22,10 +22,11 @@ module.exports = (allModels) => {
             username: username
           };
 
-          const userHomeCallback = (listExpenseResult, getMonthlyExpenseResult) => {
-            console.log("userHome userHomeCallback listExpenseResult\n",listExpenseResult);
-            console.log("userHome userHomeCallback getMonthlyExpenseResult\n", getMonthlyExpenseResult);
-            response.cookie('monthlyExpense', JSON.stringify(getMonthlyExpenseResult));
+          const userHomeCallback = (listExpenseResult, MonthlyExpenseResult, CategorizedExpenseResult) => {
+            // console.log("userHome userHomeCallback listExpenseResult\n",listExpenseResult);
+            // console.log("userHome userHomeCallback MonthlyExpenseResult\n", MonthlyExpenseResult);
+            response.cookie('monthlyExpense', JSON.stringify(MonthlyExpenseResult));
+            response.cookie('categorizedExpense', JSON.stringify(CategorizedExpenseResult));
             response.render('userHome', {listExpenseResult: listExpenseResult});
           }
 

@@ -32,8 +32,8 @@ module.exports = (dbPoolInstance) => {
             const hashedUsername = sha256(SALT + data.username);
 
             // invoke callback function with results after query has executed
-            console.log("login result.rows: ");
-            console.log(result.rows);
+            // console.log("login result.rows: ");
+            // console.log(result.rows);
             loginSuccessfulCallback(usernameInput, hashedUsername);
 
           } else {
