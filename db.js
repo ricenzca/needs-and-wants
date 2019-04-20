@@ -66,7 +66,7 @@ const registerModelsObject = registerModelsFunction( pool );
 const loginModelsFunction = require('./models/login-model');
 const loginModelsObject = loginModelsFunction( pool );
 
-const userHomeModelsFunction = require('./models/userHome');
+const userHomeModelsFunction = require('./models/userHome-model');
 const userHomeModelsObject = userHomeModelsFunction( pool );
 
 const expenseModelsFunction = require('./models/expense-model');

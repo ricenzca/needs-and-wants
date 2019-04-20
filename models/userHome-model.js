@@ -38,7 +38,7 @@ module.exports = (dbPoolInstance) => {
                           FROM expenses WHERE user_id='${userId}'
                           AND date_trunc('month', date) > (current_date - INTERVAL '12 months')
                           GROUP BY date_trunc('month',date), need_want
-                          ORDER BY date_trunc('month',date), need_want
+                          ORDER BY need_want, date_trunc('month',date)
                           ;`;
 
         dbPoolInstance.query(queryString, (error, result) => {
@@ -49,7 +49,7 @@ module.exports = (dbPoolInstance) => {
           } else {
             let monthlyExpenseResult = result.rows;
             // console.log("monthlyExpenseResult");
-            // console.log(monthlyExpenseResult);
+            console.log(monthlyExpenseResult);
             
             let queryString = `
                               SELECT to_char(date_trunc('month', date), 'Mon-YYYY') 
@@ -58,8 +58,8 @@ module.exports = (dbPoolInstance) => {
                               SUM(amount) AS monthly_sum
                               FROM expenses WHERE user_id='${userId}'
                               AND date_trunc('month', date) > (current_date - INTERVAL '1 month')
-                              GROUP BY date_trunc('month',date), category
-                              ORDER BY date_trunc('month',date), category
+                              GROUP BY date_trunc('month', date), category
+                              ORDER BY SUM(amount) DESC
                               ;`;
 
             dbPoolInstance.query(queryString, (error, result) => {

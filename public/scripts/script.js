@@ -26,90 +26,56 @@ function plotMonthlyExpenseChart () {
 	// console.log("monthlyExpense");
 	// console.log(monthlyExpense);
 
-	const xAxislabels = [];
-	const needValues = [];
-	for (let i=0; i<monthlyExpense.length; i+=2) {
-		xAxislabels.push(monthlyExpense[i].expense_month);
-		needValues.push(monthlyExpense[i].monthly_sum);
-	}
-	const wantValues = [];
-	for (let j=1; j<monthlyExpense.length+1; j+=2) {
-		wantValues.push(monthlyExpense[j].monthly_sum);
-	}
-	// console.log("xAxislabels");
-	// console.log(xAxislabels);
-	// console.log("needValues");
-	// console.log(needValues);
-	// console.log("wantValues");
-	// console.log(wantValues);
-
-
-	const values = monthlyExpense.map(item => {
-		return item.monthly_sum;
+	const expenseMonthArray = monthlyExpense.map(item => {
+		return item.expense_month;
 	})
-	// console.log("Values");
-	// console.log(values);
+	// console.log("expenseMonthArray\n", expenseMonthArray);
+	const distinctMonths = [...new Set(expenseMonthArray)];
+	// console.log("distinctMonths");
+	// console.log(distinctMonths);
+
+	const needValues = [];
+	const wantValues = [];
+	let i=0;
+	let j=0;
+	distinctMonths.forEach(item => {
+		if (item === monthlyExpense[i].expense_month && monthlyExpense[i].need_want === "need" ) {
+			needValues.push(monthlyExpense[i].monthly_sum);
+			i++;
+		} else {
+			needValues.push(null);
+		}
+	})
+	// console.log("needValues\n", needValues);
+
+	distinctMonths.forEach(item => {
+		if (item === monthlyExpense[i].expense_month && monthlyExpense[i].need_want === "want" ) {
+			wantValues.push(monthlyExpense[i].monthly_sum);
+			i++;
+		} else {
+			wantValues.push(null);
+		}
+	})
+	// console.log("wantValues\n", wantValues);
+
 	var monthlyExpenseBarChartCanvas = document.getElementById('monthlyExpenseBarChart').getContext('2d');
 	var monthlyExpenseBarChart = new Chart(monthlyExpenseBarChartCanvas, {
 	    type: 'bar',
 	    data: {
-	        labels: xAxislabels,
+	    	labels: distinctMonths,
 	        datasets: [
-	        	{
-	            label: 'Needs',
+	        {
+	        	label: "Need",
 	            data: needValues,
-	            backgroundColor: 
-	            // [
-	                // 'rgba(255, 99, 132, 0.2)'
-	                // ,
-	                'rgba(54, 162, 235, 0.2)'
-	                // ,
-	                // 'rgba(255, 206, 86, 0.2)',
-	                // 'rgba(75, 192, 192, 0.2)',
-	                // 'rgba(153, 102, 255, 0.2)',
-	                // 'rgba(255, 159, 64, 0.2)'
-	            // ]
-	            ,
-	            borderColor: 
-	            // [
-	                // 'rgba(255, 99, 132, 1)'
-	                // ,
-	                'rgba(54, 162, 235, 1)'
-	                // ,
-	                // 'rgba(255, 206, 86, 1)',
-	                // 'rgba(75, 192, 192, 1)',
-	                // 'rgba(153, 102, 255, 1)',
-	                // 'rgba(255, 159, 64, 1)'
-	            // ]
-	            ,
+	            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+	            borderColor: 'rgba(54, 162, 235, 1)',
 	            borderWidth: 1
 	        },
 	        {
-	            label: 'Wants',
+	        	label: "Want",
 	            data: wantValues,
-	            backgroundColor: 
-	            // [
-	                'rgba(255, 99, 132, 0.2)'
-	                // ,
-	                // 'rgba(54, 162, 235, 0.2)'
-	                // ,
-	                // 'rgba(255, 206, 86, 0.2)',
-	                // 'rgba(75, 192, 192, 0.2)',
-	                // 'rgba(153, 102, 255, 0.2)',
-	                // 'rgba(255, 159, 64, 0.2)'
-	            // ]
-	            ,
-	            borderColor: 
-	            // [
-	                'rgba(255, 99, 132, 1)'
-	                // ,
-	                // 'rgba(54, 162, 235, 1)',
-	                // 'rgba(255, 206, 86, 1)',
-	                // 'rgba(75, 192, 192, 1)',
-	                // 'rgba(153, 102, 255, 1)',
-	                // 'rgba(255, 159, 64, 1)'
-	            // ]
-	            ,
+	            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+	            borderColor: 'rgba(255, 99, 132, 1)',
 	            borderWidth: 1
 	        }
 	        ]
@@ -136,7 +102,9 @@ function plotMonthlyExpenseChart () {
 	                },
 	                stacked: true
 	            }],
-	            xAxes: [{ stacked: true }]	           
+	            xAxes: [{ 
+	            	stacked: true
+	            }]	           
 	        }
 	    }
 	});
@@ -153,6 +121,8 @@ function plotCategorizedExpenseChart () {
 	const pieValues = categorizedExpense.map(item => {
 		return item.monthly_sum;
 	})
+
+	const current_month = categorizedExpense[0].expense_month;
 
 	// console.log("pieLabels");
 	// console.log(pieLabels);
@@ -175,7 +145,7 @@ function plotCategorizedExpenseChart () {
 	    	},
 	    	title: {
 	    		display: true,
-	    		text: ['Expenses by category'],
+	    		text: [`Expense breakdown for current month (${current_month})`],
 	    		fontColor: 'black',
 	    		fontSize: 15,
 	    		padding: 10
