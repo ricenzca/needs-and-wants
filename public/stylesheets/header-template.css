@@ -1,0 +1,15 @@
+header {
+	height: 10vh;
+}
+
+nav {
+	border-bottom: 1px solid black;
+}
+
+nav > a {
+	height: 10vh;
+}
+
+#logo {
+	height: 100%;
+}

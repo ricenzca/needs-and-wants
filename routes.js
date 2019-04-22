@@ -26,11 +26,11 @@ module.exports = (app, allModels) => {
   app.post('/logout', logoutController.logoutRequestHandler);
 
   const userHomeController = require('./controllers/userHome')(allModels);
-  app.get('/:username', userHomeController.userHomeRequestHandler);
+  app.get('/user/:username', userHomeController.userHomeRequestHandler);
   
   const expenseController = require('./controllers/expenseController')(allModels);
-  app.get('/:username/expense/new', expenseController.submitExpenseRequestHandler);
-  app.post('/:username/expense', expenseController.updateExpenseRequestHandler);
+  app.get('/user/:username/expense/new', expenseController.submitExpenseRequestHandler);
+  app.post('/user/:username/expense', expenseController.updateExpenseRequestHandler);
 
   const mainPageController = require('./controllers/mainPage')(allModels);
   app.get('/', mainPageController.mainPageRequestHandler);

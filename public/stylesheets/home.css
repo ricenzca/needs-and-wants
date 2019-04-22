@@ -1,5 +1,157 @@
-/*body {text-align: center;}
+body {
+	text-align: center;
+}
+
+header {
+	height: 10vh;
+}
+
+nav {
+	border-bottom: 1px solid black;
+}
+
+nav > a {
+	height: 10vh;
+}
 
 #logo {
-	width: 80px;
-}*/
+	height: 100%;
+}
+
+#what-container {
+	padding-top: 10vh;
+	background: url('../images/grocery.jpg');
+	background-size: cover;
+	height: 90vh;
+	background-position: 50% 50%
+}
+
+#how-container {
+	padding-top: 10vh;
+	background: url('../images/relax.jpg');
+	background-size: cover;
+	height: 90vh;
+	color: brown;
+	background-position: 50% 50%
+}
+
+.text-container {
+	margin: 2% auto;
+	background: rgba(255,255,255,.5);
+	padding: 1.5% 3%;
+	width: 55%;
+	border-radius: 20px;
+	color: rgb(100,100,114);
+	text-align: left;
+}
+
+h5 {
+	line-height: 2.5rem;
+	font-size: 1.8rem;
+	text-align: center;
+	font-weight: bold;
+	margin-bottom: 2rem;
+}
+
+p {
+	color: black;
+	text-align: justify;
+	font-size: 1.3rem;
+}
+
+span {
+	color: black;
+}
+
+@media (min-width: 768px) and (max-width: 1025px) {
+
+	#what-container {
+		padding-top: 8vw;
+		background: url('../images/grocery.jpg');
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: 50% 50%;
+		height: 90vh;
+	}
+
+	#how-container {
+		padding-top: 8vw;
+		background: url('../images/relax.jpg');
+		background-repeat: no-repeat;
+		background-size: cover;
+		color: brown;
+		background-position: 50% 50%;
+		height: 90vh;
+	}
+
+	.text-container {
+		margin: 10% auto;
+		background: rgba(255,255,255,.5);
+		padding: 4vw 5vw;
+		width: 90%;
+		border-radius: 20px;
+		color: rgb(100,100,114);
+		text-align: left;
+	}
+
+	h5 {
+		line-height: 4.5vw;
+		font-size: 3.8vw;
+		text-align: center;
+		font-weight: bold;
+		margin-bottom: 4vw;
+	}
+
+	p {
+		color: black;
+		text-align: justify;
+		font-size: 3.5vw;
+	}
+
+}
+
+@media (max-width: 767px) {
+	#what-container {
+		padding-top: 8vw;
+		background: url('../images/grocery.jpg');
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: 50% 50%;
+		height: 90vh;
+	}
+
+	#how-container {
+		padding-top: 8vw;
+		background: url('../images/relax.jpg');
+		background-repeat: no-repeat;
+		background-size: cover;
+		color: brown;
+		background-position: 50% 50%;
+		height: 90vh;
+	}
+
+	.text-container {
+		margin: 10% auto;
+		background: rgba(255,255,255,.5);
+		padding: 4vw 5vw;
+		width: 90%;
+		border-radius: 20px;
+		color: rgb(100,100,114);
+		text-align: left;
+	}
+
+	h5 {
+		line-height: 3vh;
+		font-size: 2.5vh;
+		text-align: center;
+		font-weight: bold;
+		margin-bottom: 2vh;
+	}
+
+	p {
+		color: black;
+		text-align: justify;
+		font-size: 2.2vh;
+	}
+
+}

@@ -18,7 +18,7 @@ module.exports = (dbPoolInstance) => {
 
       } else {
 
-        let queryString = `INSERT INTO expenses (amount, need_want, date, comments, user_id) VALUES ($1,$2,$3,$4, ${result.rows[0].id}) RETURNING id;`;
+        let queryString = `INSERT INTO expenses (amount, need_want, date, category, comments, user_id) VALUES ($1,$2,$3,$4,$5, ${result.rows[0].id}) RETURNING id;`;
         const values = data.userInput;
         console.log("expenseModel values",values)
 

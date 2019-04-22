@@ -60,6 +60,9 @@ pool.on('error', function (err) {
  * ===================================================
  */
 
+const mainPageModelsFunction = require('./models/mainPage-model');
+const mainPageModelsObject = mainPageModelsFunction( pool );
+
 const registerModelsFunction = require('./models/register');
 const registerModelsObject = registerModelsFunction( pool );
 
@@ -98,6 +101,7 @@ module.exports = {
    * ADD APP MODELS HERE
    */
 
+  mainPageModelsObject: mainPageModelsObject,
   registerModelsObject: registerModelsObject,
   loginModelsObject: loginModelsObject,
   userHomeModelsObject: userHomeModelsObject,

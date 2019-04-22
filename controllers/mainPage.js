@@ -27,9 +27,9 @@ module.exports = (allModels) => {
         }
 
         const resultCallback = (result) => {
-          console.log("mainPage controller: ");
-          console.log(result);
-          response.redirect(`/${username}`);
+          // console.log("mainPage controller: ");
+          // console.log(result);
+          response.redirect(`/user/${username}`);
         }
         allModels.mainPageModelsObject.mainPageModelFunction(usernameCallback, resultCallback);
 

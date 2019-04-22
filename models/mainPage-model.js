@@ -19,8 +19,8 @@ module.exports = (dbPoolInstance) => {
       } else {
 
         // invoke callback function with results after query has executed
-        console.log("mainPage model result.rows: ");
-        console.log(result.rows);
+        // console.log("mainPage model result.rows: ");
+        // console.log(result.rows);
         resultCallback(result.rows);
 
       }

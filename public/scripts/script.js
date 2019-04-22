@@ -86,9 +86,9 @@ function plotMonthlyExpenseChart () {
 	    	},
 	    	title: {
 	    		display: true,
-	    		text: ['Monthly Expense'],
+	    		text: ['Monthly Expense Trend'],
 	    		fontColor: 'black',
-	    		fontSize: 15,
+	    		fontSize: 20,
 	    		padding: 10
 	    	},
 	        scales: {
@@ -105,6 +105,13 @@ function plotMonthlyExpenseChart () {
 	            xAxes: [{ 
 	            	stacked: true
 	            }]	           
+	        },
+	        legend: {
+	            labels: {
+	            	fontSize: 13,
+	            	fontColor: 'black',
+	                fontStyle: 'bold'
+	            }
 	        }
 	    }
 	});
@@ -136,7 +143,8 @@ function plotCategorizedExpenseChart () {
 	        labels: pieLabels,
 	        datasets: [{
 	        	label: 'Dollars($)',
-	        	data: pieValues
+	        	data: pieValues,
+	        	borderColor: 'rgba(255,255,255,.5)'
 	        }]
 	    },
 	    options: {
@@ -145,15 +153,24 @@ function plotCategorizedExpenseChart () {
 	    	},
 	    	title: {
 	    		display: true,
-	    		text: [`Expense breakdown for current month (${current_month})`],
+	    		text: [`Expense breakdown for current month [${current_month}]`],
 	    		fontColor: 'black',
-	    		fontSize: 15,
+	    		fontStyle: 'bold',
+	    		fontSize: 20,
 	    		padding: 10
 	    	},
 	    	plugins: {
 	    		colorschemes: {
 	    			scheme: 'tableau.Tableau20'
 	    		}
+	    	},
+	    	legend: {
+	    	    labels: {
+	    	    	fontSize: 12,
+	    	    	fontColor: 'black',
+	    	        fontStyle: 'bold',
+	    	        padding: 15
+	    	    }
 	    	}
 	    }
 	});

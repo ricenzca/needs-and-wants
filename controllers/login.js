@@ -22,7 +22,7 @@ module.exports = (allModels) => {
         console.log("login controller successful: ");
         response.cookie('username', usernameInput);
         response.cookie('loggedIn', hashedUsername);
-        response.redirect(`/${username}`);
+        response.redirect(`/user/${username}`);
       };
 
       const loginUnsuccessfulCallback = () => {

@@ -40,7 +40,7 @@ module.exports = (allModels) => {
     }    
     
     const updateExpenseCallback = (result) => {
-      response.redirect(`/${username}`);
+      response.redirect(`/user/${username}`);
     }
 
     allModels.expenseModelsObject.expenseModelFunction(data, updateExpenseCallback);

@@ -1,0 +1,13 @@
+body {
+	background: rgb(243, 234, 203);
+}
+
+main {
+	margin: 0 10% 3% 3%;
+	padding-top: 10vh;
+}
+
+legend {
+	font-size: 1rem;
+	font-weight: bold;
+}

@@ -1,0 +1,56 @@
+.main-container {
+	padding-top: 10vh;
+	display: flex;
+	margin: 5% 25%;
+	height: 10vh;
+}
+
+.logo-container {
+	width: 40%;
+	margin-right: 5%;
+}
+
+#logo-2 {
+	width: 100%;
+}
+
+.form-container {
+	height: 100%;
+}
+
+
+h1 {
+	font-size: 2.5rem;
+	margin-bottom: 2.5rem;
+}
+
+.user-input-form {
+	display: inline-block;
+	width: 100%;
+	font-size: 1.2rem;
+}
+
+.buttons {
+	font-size: 1.2rem;
+	margin-top: 1rem;
+}
+
+@media (max-width: 1025px) {
+
+	.main-container {
+		margin: 5% 20%;
+	}
+
+	.logo-container {
+		width: 50%;
+	}
+
+
+	h1 {
+		font-size: 2rem;
+	}
+
+	.buttons {
+		margin-top: 1rem;
+	}
+}
