@@ -49,7 +49,6 @@ class UserHome extends React.Component {
           
           <main>
           <h4>Expenses Dashboard</h4>
-          <div id="expense-dashboard">
             <div class="chart-container">
               <canvas id="categorizedExpenseChart" width="400" height="400"></canvas>
             </div>
@@ -57,10 +56,26 @@ class UserHome extends React.Component {
             <div class="chart-container">
               <canvas id="monthlyExpenseBarChart" width="400" height="400"></canvas>
             </div>
+
+          
+
+          <div>
+            <h4>Expense Records</h4>
+            <table>
+              <thead>
+                <tr>
+                  <th>Expense date</th>
+                  <th>Amount</th>
+                  <th>Need / Want</th>
+                  <th>Category</th>
+                  <th>Comments</th>
+                </tr>
+              </thead>
+              {table}
+            </table>
           </div>
-
-          <h4>Expense Records</h4>
-
+          </main>
+          
           <div id="buttons-container">
             <div class="button">
               <form method="get" action={logExpensePath}>
@@ -82,22 +97,6 @@ class UserHome extends React.Component {
               </form>
             </div>
           </div>
-
-          <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around'}}>
-            <table>
-              <thead>
-                <tr>
-                  <th>Expense date</th>
-                  <th>Amount</th>
-                  <th>Need / Want</th>
-                  <th>Category</th>
-                  <th>Comments</th>
-                </tr>
-              </thead>
-              {table}
-            </table>
-          </div>
-          </main>
         </body>
       </html>
     );

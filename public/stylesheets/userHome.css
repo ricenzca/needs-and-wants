@@ -4,21 +4,20 @@ body {
 
 main {
 	margin: 3% 10% 3% 3%;
-}
-
-h4 {
-	text-align: center;
-	color: brown;
-	margin-bottom: 3vh;
-	font-weight: bold;
-}
-
-#expense-dashboard {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-around;
 	height: 90vh;
 }
+
+h4 {
+	text-align: center;
+	color: brown;
+	margin: 3vh auto;
+	font-weight: bold;
+	width: 100%;
+}
+
 
 .chart-container {
 	width: 40%;
@@ -61,9 +60,32 @@ th {
 
 tr:hover {background-color: #f5f5f5;}
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 1025px) {
+	main {
+		margin: 3%;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-around;
+		height: 90vh;
+	}
+
+	h4 {
+		text-align: center;
+		color: brown;
+		margin: 2vh auto;
+		font-weight: bold;
+		width: 100%;
+	}
+
+	.chart-container {
+		width: 85%;
+		margin: 3vh auto;
+	}
+
 	table {
 		overflow-x: auto;
 		display: block;
+		margin: 3vh auto;
 	}
+
 }
