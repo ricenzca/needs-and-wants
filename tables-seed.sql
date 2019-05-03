@@ -1,5 +1,5 @@
 -- psql -d sei_prj2 -U postgres -f tables-seed.sql
-
+SET datestyle = "ISO, DMY";
 DROP TABLE expenses;
 DROP TABLE users;
 DROP TABLE expense_category;
