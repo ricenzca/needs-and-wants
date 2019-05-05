@@ -11,6 +11,16 @@ class SubmitExpenseForm extends React.Component {
     const cancelPath = `/user/${username}`
     const logoutPath = `/logout`;
 
+    const expenseCategory = this.props.expenseCategory;
+    console.log("expenseCategory");
+    console.log(expenseCategory);
+
+    const optionDropdown = expenseCategory.map( item => {
+      return (
+        <option value={item.category}>{item.category}</option>
+      )
+    })
+
     return (
       <html>
         <head>
@@ -32,19 +42,19 @@ class SubmitExpenseForm extends React.Component {
                 <div class="form-group row">
                     <label for="amount" class="col-2 col-form-label font-weight-bold">Expense amount: </label>
                     <div class="col-3">
-                      <input type="text" class="form-control" id="amount" name="amount" required/>
+                      <input type="text" class="form-control text-success font-weight-bold" id="amount" name="amount" required/>
                     </div>
                 </div>
                 <fieldset class="form-group">
                   <legend>Is this a need or a want?</legend>
                     <div class="form-check">
-                      <label class="form-check-label">
+                      <label class="form-check-label text-success font-weight-bold">
                        <input type="radio" class="form-check-input" name="need-want" id="need" value="need" required/>
                        Need
                       </label>
                     </div>
                     <div class="form-check">
-                       <label class="form-check-label">
+                       <label class="form-check-label text-success font-weight-bold">
                        <input type="radio" class="form-check-input" name="need-want" id="want" value="want" required/>
                        Want
                        </label>
@@ -53,23 +63,25 @@ class SubmitExpenseForm extends React.Component {
                 <div class="form-group row">
                   <label for="date" class="col-2 col-form-label font-weight-bold">Date:</label>
                   <div class="col-3">
-                    <input class="form-control" type="date" name="date" id="date" required/>
+                    <input class="form-control text-success font-weight-bold" type="date" name="date" id="date" required/>
                   </div>
                 </div>
                 <div class="form-group row">
                     <label for="category" class="col-2 col-form-label font-weight-bold">Category: </label>
                     <div class="col-3">
-                      <input type="text" class="form-control" id="category" name="category" />
+                      <select id="category" class="custom-select text-success my-2 my-sm-0 font-weight-bold form-control" name="category">
+                        {optionDropdown}
+                      </select>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="comments" class="col-2 col-form-label font-weight-bold">Comments: </label>
                     <div class="col-3">
-                      <input type="text" class="form-control" id="comments" name="comments"/>
+                      <input type="text" class="form-control text-success font-weight-bold" id="comments" name="comments"/>
                     </div>
                 </div>
                 <input class="btn btn-outline-success font-weight-bold buttons mr-3" type="submit" value="Submit" />
-                <input class="btn btn-outline-success font-weight-bold buttons" type="submit" value="Cancel" formMethod="get" formAction={cancelPath} />
+                <a href={cancelPath} class="btn btn-outline-success font-weight-bold buttons" >Cancel</a>
               </form>
             </div>
           </main>

@@ -7,6 +7,26 @@ module.exports = (dbPoolInstance) => {
 
   // `dbPoolInstance` is accessible within this function scope
 
+  let getExpenseCategory = (submitExpenseCallback) => {
+
+    let queryString = `SELECT * FROM expense_category;`;
+
+    dbPoolInstance.query(queryString, (error, result) => {
+      if (error) {
+
+       console.log("expenseModel getExpenseCategory select query error", error);
+
+      } else {
+
+            // console.log("expenseModel getExpenseCategory result.rows: ");
+            // console.log(result.rows);
+
+            submitExpenseCallback(result.rows);
+      }
+    });
+  }
+
+
   let logUserExpense = (data, updateExpenseCallback) => {
 
     let queryString = `SELECT * FROM users WHERE username='${data.username}';`;
@@ -25,13 +45,12 @@ module.exports = (dbPoolInstance) => {
         dbPoolInstance.query(queryString, values, (error, result) => {
           if (error) {
 
-           console.log("getUserExpense select query error", error);
+           console.log("logUserExpense insert query error", error);
 
           } else {
 
-            // invoke callback function with results after query has executed
-            console.log("expenseModel logUserExpense result.rows: ");
-            console.log(result.rows);
+            // console.log("expenseModel logUserExpense result.rows: ");
+            // console.log(result.rows);
 
             updateExpenseCallback(result.rows);
 
@@ -42,6 +61,7 @@ module.exports = (dbPoolInstance) => {
   };
 
   return {
-    expenseModelFunction : logUserExpense
+    submitExpenseModelFunction : getExpenseCategory,
+    updateExpenseModelFunction : logUserExpense
   };
 };

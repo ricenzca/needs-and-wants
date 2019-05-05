@@ -32,6 +32,9 @@ module.exports = (app, allModels) => {
   app.get('/user/:username/expense/new', expenseController.submitExpenseRequestHandler);
   app.post('/user/:username/expense', expenseController.updateExpenseRequestHandler);
 
+  const testController = require('./controllers/test')(allModels);
+  app.get('/test', testController.testRequestHandler);
+
   const mainPageController = require('./controllers/mainPage')(allModels);
   app.get('/', mainPageController.mainPageRequestHandler);
 };

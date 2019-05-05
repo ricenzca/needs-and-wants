@@ -18,7 +18,11 @@ module.exports = (allModels) => {
 
       if (hashUserName === loggedIn) {
 
-          response.render('./submitExpenseForm', {username: username});
+        const submitExpenseCallback = (expenseCategory) => {
+          response.render('./submitExpenseForm', {username: username, expenseCategory: expenseCategory});  
+        };
+        
+        allModels.expenseModelsObject.submitExpenseModelFunction(submitExpenseCallback);
           
       } else {
         response.status(401).render('./unauthorised');
@@ -43,7 +47,7 @@ module.exports = (allModels) => {
       response.redirect(`/user/${username}`);
     }
 
-    allModels.expenseModelsObject.expenseModelFunction(data, updateExpenseCallback);
+    allModels.expenseModelsObject.updateExpenseModelFunction(data, updateExpenseCallback);
 
   };
 

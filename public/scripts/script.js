@@ -1,6 +1,7 @@
 window.onload = function () {
 	plotMonthlyExpenseChart();
 	plotCategorizedExpenseChart();
+	selectEvent();
 }
 
 function readCookie(name) {
@@ -177,3 +178,16 @@ function plotCategorizedExpenseChart () {
 }
 
 
+function selectEvent () {
+
+	const changeHandler = function (event) {
+		console.log("script2");
+		const submit = document.getElementById("submit");
+		submit.click();
+		event.preventDefault();
+	}
+
+	const select = document.getElementById("select");
+	select.addEventListener("change", changeHandler);
+
+}

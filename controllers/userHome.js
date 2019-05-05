@@ -9,6 +9,7 @@ module.exports = (allModels) => {
   let userHomeRequestHandler = (request, response) => {
     const username = request.cookies.username;
     const loggedIn = request.cookies.loggedIn;
+    const chosenPeriod = request.query.chosenPeriod
 
     if (username && loggedIn) {
 
@@ -19,15 +20,16 @@ module.exports = (allModels) => {
       if (hashUserName === loggedIn) {
 
           const data = {
-            username: username
+            username: username,
+            chosenPeriod: chosenPeriod
           };
 
-          const userHomeCallback = (listExpenseResult, MonthlyExpenseResult, CategorizedExpenseResult) => {
+          const userHomeCallback = (chosenPeriodString, listExpenseResult, MonthlyExpenseResult, CategorizedExpenseResult) => {
             // console.log("userHome userHomeCallback listExpenseResult\n",listExpenseResult);
             // console.log("userHome userHomeCallback MonthlyExpenseResult\n", MonthlyExpenseResult);
             response.cookie('monthlyExpense', JSON.stringify(MonthlyExpenseResult));
             response.cookie('categorizedExpense', JSON.stringify(CategorizedExpenseResult));
-            response.render('userHome', {listExpenseResult: listExpenseResult});
+            response.render('userHome', {chosenPeriodString: chosenPeriodString, listExpenseResult: listExpenseResult});
           }
 
           allModels.userHomeModelsObject.userHomeModelFunction(data, userHomeCallback);

@@ -75,6 +75,9 @@ const userHomeModelsObject = userHomeModelsFunction( pool );
 const expenseModelsFunction = require('./models/expense-model');
 const expenseModelsObject = expenseModelsFunction( pool );
 
+const testModelsFunction = require('./models/test-model');
+const testModelsObject = testModelsFunction( pool );
+
 /*
  * ===================================================
  * ===================================================
@@ -105,6 +108,6 @@ module.exports = {
   registerModelsObject: registerModelsObject,
   loginModelsObject: loginModelsObject,
   userHomeModelsObject: userHomeModelsObject,
-  expenseModelsObject: expenseModelsObject
-  
+  expenseModelsObject: expenseModelsObject,
+  testModelsObject: testModelsObject
 };

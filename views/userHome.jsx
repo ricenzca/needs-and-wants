@@ -9,6 +9,8 @@ class UserHome extends React.Component {
     const listExpenseResult = this.props.listExpenseResult;
     // console.log("listExpenseResult");
     // console.log(listExpenseResult);
+
+    const chosenPeriodString = this.props.chosenPeriodString;
     
     const table = listExpenseResult.map(item => {
       let formattedDate = moment(item.date).format('YYYY-MM-DD');
@@ -30,6 +32,8 @@ class UserHome extends React.Component {
 
     const logoutPath = `/logout`;
 
+    const listExpensePath = `/user/${username}`;
+
     return (
       <html>
         <head>
@@ -38,10 +42,10 @@ class UserHome extends React.Component {
           <link rel="stylesheet" type="text/css" href="../stylesheets/userHome.css" />
           <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
           <script type="text/javascript" src="../scripts/chartjs-plugin-colorschemes.js"></script>
-          <script type="text/javascript" src="../scripts/script.js"></script>
-          <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-          <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+          <script type="text/javascript" src="../scripts/script.js" crossOrigin="anonymous"></script>
+          <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossOrigin="anonymous"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossOrigin="anonymous"></script>
+          <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossOrigin="anonymous"></script>
         </head>
         
         <body>
@@ -60,7 +64,7 @@ class UserHome extends React.Component {
           
 
           <div>
-            <h4>Expense Records</h4>
+            <h4>Expense Records {chosenPeriodString}</h4>
             <table>
               <thead>
                 <tr>
@@ -88,12 +92,14 @@ class UserHome extends React.Component {
               </form>
             </div>
             <div class="button">
-              <form method="get" action="#">
-                <select class="custom-select text-success my-2 my-sm-0 font-weight-bold">
-                  <option class="" name="chosenPeriod" value="1">Last 30 days</option>
-                  <option class="" name="chosenPeriod" value="2">Last 60 days</option>
-                  <option class="" name="chosenPeriod" value="3">Last 90 days</option>
+              <form method="get" action={listExpensePath}>
+                <select id="select" class="custom-select text-success my-2 my-sm-0 font-weight-bold" name="chosenPeriod">
+                  <option selected="selected">Select period</option>
+                  <option value="30">Last 30 days</option>
+                  <option value="60">Last 60 days</option>
+                  <option value="90">Last 90 days</option>
                 </select>
+                <input id="submit" type="submit" style={{visibility:"hidden"}} value="submit" />
               </form>
             </div>
           </div>

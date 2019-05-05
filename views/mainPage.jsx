@@ -29,10 +29,10 @@ class MainPage extends React.Component {
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav ml-3 mr-auto">
                     <li class="nav-item mr-3">
-                      <a class="nav-link" href="#what-container">What are we?</a>
+                      <a class="nav-link" href="/">What are we?</a>
                     </li>
                     <li class="nav-item mr-3">
-                      <a class="nav-link" href="#how-container">Getting started</a>
+                      <a class="nav-link" href="/#how-container">Getting started</a>
                     </li>
                   </ul>
                   <form class="button mr-2" method="get" action="/login">
