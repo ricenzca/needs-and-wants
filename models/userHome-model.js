@@ -73,7 +73,7 @@ module.exports = (dbPoolInstance) => {
                               category,
                               SUM(amount) AS monthly_sum
                               FROM expenses WHERE user_id='${userId}'
-                              AND date_trunc('day', date) > (current_date - INTERVAL '30 days')
+                              AND date_trunc('month', date) > (current_date - INTERVAL '1 month')
                               GROUP BY date_trunc('month', date), category
                               ORDER BY SUM(amount) DESC
                               ;`;

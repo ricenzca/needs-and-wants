@@ -100,6 +100,7 @@ class UserHome extends React.Component {
                   <option value="90">Last 90 days</option>
                 </select>
                 <input id="submit" type="submit" style={{visibility:"hidden"}} value="submit" />
+                <noscript><input id="submit" type="submit" value="submit" /></noscript>
               </form>
             </div>
           </div>

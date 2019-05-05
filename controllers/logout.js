@@ -8,8 +8,9 @@ module.exports = (allModels) => {
 
   let logoutRequestHandler = (request, response) => {
     const cookie = request.cookies;
-    console.log("cookie");
-    console.log(cookie);
+    console.log("logout Controller")
+    // console.log("cookie");
+    // console.log(cookie);
     for (var prop in cookie) {
         if (!cookie.hasOwnProperty(prop)) {
             continue;
