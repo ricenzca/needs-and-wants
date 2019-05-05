@@ -12,18 +12,16 @@ class UserHome extends React.Component {
 
     const chosenPeriodString = this.props.chosenPeriodString;
     
-    const table = listExpenseResult.map(item => {
+    const tableBodyContents = listExpenseResult.map(item => {
       let formattedDate = moment(item.date).format('YYYY-MM-DD');
       return (
-        <tbody>
           <tr>
             <td>{formattedDate}</td>
             <td>{item.amount}</td>
             <td style={{textTransform: 'capitalize'}}>{item.need_want}</td>
             <td style={{textTransform: 'capitalize'}}>{item.category}</td>
             <td style={{textTransform: 'capitalize'}}>{item.comments}</td>
-          </tr>
-        </tbody>
+          </tr>        
       );
     })
 
@@ -32,7 +30,8 @@ class UserHome extends React.Component {
 
     const logoutPath = `/logout`;
 
-    const listExpensePath = `/user/${username}`;
+    // const listExpensePath = `/user/${username}`;
+    const listExpensePath = `/test/${username}`;
 
     return (
       <html>
@@ -64,7 +63,7 @@ class UserHome extends React.Component {
           
 
           <div>
-            <h4>Expense Records {chosenPeriodString}</h4>
+            <h4 id="table-title">Expense Records {chosenPeriodString}</h4>
             <table>
               <thead>
                 <tr>
@@ -75,7 +74,9 @@ class UserHome extends React.Component {
                   <th>Comments</th>
                 </tr>
               </thead>
-              {table}
+              <tbody id="tbody">
+              {tableBodyContents}
+              </tbody>
             </table>
           </div>
           </main>
@@ -93,6 +94,7 @@ class UserHome extends React.Component {
             </div>
             <div class="button">
               <form method="get" action={listExpensePath}>
+                <input id="input" type="hidden" value={username} name="username" />
                 <select id="select" class="custom-select text-success my-2 my-sm-0 font-weight-bold" name="chosenPeriod">
                   <option selected="selected">Select period</option>
                   <option value="30">Last 30 days</option>

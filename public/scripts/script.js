@@ -178,16 +178,70 @@ function plotCategorizedExpenseChart () {
 }
 
 
+
 function selectEvent () {
 
-	const changeHandler = function (event) {
-		console.log("script2");
-		const submit = document.getElementById("submit");
-		submit.click();
-		event.preventDefault();
-	}
+	var responseHandler = function() {
+		// console.log("response text!!!!!!!!!!", this.responseText);
 
+		var response = JSON.parse( this.responseText );
+		console.log("parsed response", response );
+		// var thing = document.createElement('h1');
+		// thing.innerText = person.name;
+		// document.body.appendChild(thing);
+
+		// console.log("response chosen period", response.chosenPeriodString );
+		// console.log("response listExpenseResult", response.listExpenseResult );
+
+		document.getElementById("table-title").innerHTML = `Expense Records ${response.chosenPeriodString}`;
+
+
+		let tableBody = document.getElementById("tbody");
+		while (tableBody.hasChildNodes()) {
+			tableBody.removeChild(tableBody.firstChild);
+	  	}
+	  	
+		response.listExpenseResult.forEach(item => {
+			let tableRow = document.createElement("TR");
+			let array = ["date", "amount", "need_want", "category", "comments"]
+
+			const capitalize = (s) => {
+			  if (typeof s !== 'string') return ''
+			  return s.charAt(0).toUpperCase() + s.slice(1)
+			}
+
+			for (i=0; i<array.length; i++) {
+				let data = document.createElement("TD");
+				data.innerHTML = capitalize(item[array[i]]);
+				tableRow.appendChild(data);
+			}
+			tableBody.appendChild(tableRow);
+	  	})
+	};
+
+	const input = document.getElementById("input");
 	const select = document.getElementById("select");
-	select.addEventListener("change", changeHandler);
+	select.addEventListener("change", function(event) {
+
+	// const input = document.getElementById("input");
+	console.log("input value");
+	console.log(input.value);
+
+	console.log("select value");
+	console.log(select.value);
+
+    // make a new request
+    var request = new XMLHttpRequest();
+
+    // listen for the request response
+    request.addEventListener("load", responseHandler);
+
+    var url = `http://127.0.0.1:3000/test/${input.value}/?${input.name}=${input.value}&${select.name}=${select.value}`;
+    request.open("GET", url);
+
+    // // send the request
+    request.send();
+
+  });
 
 }

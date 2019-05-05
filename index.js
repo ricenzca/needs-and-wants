@@ -29,6 +29,9 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'jsx');
 app.engine('jsx', reactEngine);
 
+const cors = require('cors');
+app.use(cors());
+
 /**
  * ===================================
  * ===================================
