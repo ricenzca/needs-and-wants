@@ -236,7 +236,7 @@ function selectEvent () {
     // listen for the request response
     request.addEventListener("load", responseHandler);
 
-    var url = `http://127.0.0.1:3000/test/${input.value}/?${input.name}=${input.value}&${select.name}=${select.value}`;
+    var url = `/retrieve/${input.value}/?${input.name}=${input.value}&${select.name}=${select.value}`;
     request.open("GET", url);
 
     // // send the request

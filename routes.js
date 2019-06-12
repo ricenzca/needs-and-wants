@@ -33,7 +33,7 @@ module.exports = (app, allModels) => {
   app.post('/user/:username/expense', expenseController.updateExpenseRequestHandler);
 
   const testController = require('./controllers/test')(allModels);
-  app.get('/test/:username', testController.testRequestHandler);
+  app.get('/retrieve/:username', testController.testRequestHandler);
 
   const mainPageController = require('./controllers/mainPage')(allModels);
   app.get('/', mainPageController.mainPageRequestHandler);
