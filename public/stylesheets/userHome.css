@@ -34,7 +34,7 @@ h4 {
 	margin-bottom: 3px;
 }
 
-#buttons-container input {
+#buttons-container input, #buttons-container select {
 	background: rgba(248, 249, 250, 0.8);
 }
 

@@ -155,3 +155,10 @@ span {
 	}
 
 }
+
+.navbar-collapse {
+	margin-left: 1.5rem;
+	text-align: left;
+	display: flex;
+	justify-content: space-between;
+}

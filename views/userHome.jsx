@@ -12,18 +12,21 @@ class UserHome extends React.Component {
 
     const chosenPeriodString = this.props.chosenPeriodString;
     
-    const tableBodyContents = listExpenseResult.map(item => {
-      let formattedDate = moment(item.date).format('YYYY-MM-DD');
-      return (
-          <tr>
-            <td>{formattedDate}</td>
-            <td>{item.amount}</td>
-            <td style={{textTransform: 'capitalize'}}>{item.need_want}</td>
-            <td style={{textTransform: 'capitalize'}}>{item.category}</td>
-            <td style={{textTransform: 'capitalize'}}>{item.comments}</td>
-          </tr>        
-      );
-    })
+    let tableBodyContents = [];
+    if (listExpenseResult[0].amount) {
+      tableBodyContents = listExpenseResult.map(item => {
+        let formattedDate = moment(item.date).format('YYYY-MM-DD');
+        return (
+            <tr>
+              <td>{formattedDate}</td>
+              <td>{item.amount}</td>
+              <td style={{textTransform: 'capitalize'}}>{item.need_want}</td>
+              <td style={{textTransform: 'capitalize'}}>{item.category}</td>
+              <td style={{textTransform: 'capitalize'}}>{item.comments}</td>
+            </tr>        
+        );
+      })
+    }
 
     const username = listExpenseResult[0].username;
     const logExpensePath = `/user/${username}/expense/new`;
@@ -87,11 +90,11 @@ class UserHome extends React.Component {
                 <input class="btn btn-outline-success my-2 my-sm-0 font-weight-bold" type="submit" value="Log new expense"/>
               </form>
             </div>
-            <div class="button">
-              <form method="get" action="#">
-                <input class="btn btn-outline-success my-2 my-sm-0 font-weight-bold" type="submit" value="Edit/Delete expense"/>
-              </form>
-            </div>
+            {/*<div class="button">
+                          <form method="get" action="#">
+                            <input class="btn btn-outline-success my-2 my-sm-0 font-weight-bold" type="submit" value="Edit/Delete expense"/>
+                          </form>
+                        </div>*/}
             <div class="button">
               <form method="get" action={listExpensePath}>
                 <input id="input" type="hidden" value={username} name="username" />

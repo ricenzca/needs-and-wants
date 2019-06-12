@@ -41,59 +41,67 @@ module.exports = (dbPoolInstance) => {
       } else {
 
         let listExpenseResult = result.rows;
-        // console.log("listExpenseResult");
-        // console.log(listExpenseResult);
+        console.log("listExpenseResult");
+        console.log(listExpenseResult);
 
-        let userId = result.rows[0].id;
+        if (listExpenseResult.length > 0) {
 
-        let queryString = `
-                          SELECT to_char(date_trunc('month', date), 'Mon-YYYY') 
-                          AS expense_month,
-                          need_want,
-                          SUM(amount) AS monthly_sum
-                          FROM expenses WHERE user_id='${userId}'
-                          AND date_trunc('month', date) > (current_date - INTERVAL '12 months')
-                          GROUP BY date_trunc('month',date), need_want
-                          ORDER BY need_want, date_trunc('month',date)
-                          ;`;
+          let userId = result.rows[0].id;
 
-        dbPoolInstance.query(queryString, (error, result) => {
-          if (error) {
+          let queryString = `
+                            SELECT to_char(date_trunc('month', date), 'Mon-YYYY') 
+                            AS expense_month,
+                            need_want,
+                            SUM(amount) AS monthly_sum
+                            FROM expenses WHERE user_id='${userId}'
+                            AND date_trunc('month', date) > (current_date - INTERVAL '12 months')
+                            GROUP BY date_trunc('month',date), need_want
+                            ORDER BY need_want, date_trunc('month',date)
+                            ;`;
 
-           console.log("monthlyExpenseResult select query error", error);
+          dbPoolInstance.query(queryString, (error, result) => {
+            if (error) {
 
-          } else {
-            let monthlyExpenseResult = result.rows;
-            // console.log("monthlyExpenseResult");
-            // console.log(monthlyExpenseResult);
-            
-            let queryString = `
-                              SELECT to_char(date_trunc('month', date), 'Mon-YYYY') 
-                              AS expense_month,
-                              category,
-                              SUM(amount) AS monthly_sum
-                              FROM expenses WHERE user_id='${userId}'
-                              AND date_trunc('month', date) > (current_date - INTERVAL '1 month')
-                              GROUP BY date_trunc('month', date), category
-                              ORDER BY SUM(amount) DESC
-                              ;`;
+             console.log("monthlyExpenseResult select query error", error);
 
-            dbPoolInstance.query(queryString, (error, result) => {
-              if (error) {
+            } else {
+              let monthlyExpenseResult = result.rows;
+              // console.log("monthlyExpenseResult");
+              // console.log(monthlyExpenseResult);
+              
+              let queryString = `
+                                SELECT to_char(date_trunc('month', date), 'Mon-YYYY') 
+                                AS expense_month,
+                                category,
+                                SUM(amount) AS monthly_sum
+                                FROM expenses WHERE user_id='${userId}'
+                                AND date_trunc('month', date) > (current_date - INTERVAL '1 month')
+                                GROUP BY date_trunc('month', date), category
+                                ORDER BY SUM(amount) DESC
+                                ;`;
 
-               console.log("CategorizedExpenseResult select query error", error);
+              dbPoolInstance.query(queryString, (error, result) => {
+                if (error) {
 
-              } else {
-                let CategorizedExpenseResult = result.rows;
-                // console.log("CategorizedExpenseResult");
-                // console.log(CategorizedExpenseResult);
+                 console.log("categorizedExpenseResult select query error", error);
 
-                // invoke callback function with results after query has executed
-                userHomeCallback(chosenPeriodString, listExpenseResult, monthlyExpenseResult, CategorizedExpenseResult);
-              }
-            });
-          }
-        });
+                } else {
+                  let categorizedExpenseResult = result.rows;
+                  // console.log("categorizedExpenseResult");
+                  // console.log(categorizedExpenseResult);
+
+                  // invoke callback function with results after query has executed
+                  userHomeCallback(chosenPeriodString, listExpenseResult, monthlyExpenseResult, categorizedExpenseResult);
+                }
+              });
+            }
+          });
+        } else {
+          let listExpenseResult = [{username: data.username}];
+          let monthlyExpenseResult = [];
+          let categorizedExpenseResult = [];
+          userHomeCallback(chosenPeriodString, listExpenseResult, monthlyExpenseResult, categorizedExpenseResult);
+        }
       }
     });
   };
