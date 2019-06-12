@@ -92,8 +92,7 @@ INSERT INTO expenses (amount, need_want, date, category, comments, user_id) VALU
 INSERT INTO expenses (amount, need_want, date, category, comments, user_id) VALUES (5, 'want', '29-11-2018', 'Dining', 'Tea', 1);
 INSERT INTO expenses (amount, need_want, date, category, comments, user_id) VALUES (31, 'want', '02-06-2019', 'Dining', 'Thai restaurant', 1);
 INSERT INTO expenses (amount, need_want, date, category, comments, user_id) VALUES (32, 'want', '09-06-2019', 'Dining', 'Japanese restaurant', 1);
-INSERT INTO expenses (amount, need_want, date, category, comments, user_id) VALUES (33, 'want', '16-06-2019', 'Dining', 'Korean restaurant', 1);
-INSERT INTO expenses (amount, need_want, date, category, comments, user_id) VALUES (34, 'want', '23-06-2019', 'Dining', 'French restaurant', 1);
+INSERT INTO expenses (amount, need_want, date, category, comments, user_id) VALUES (33, 'want', '11-06-2019', 'Dining', 'Korean restaurant', 1);
 INSERT INTO expenses (amount, need_want, date, category, comments, user_id) VALUES (100, 'want', '28-04-2019', 'Dining', 'Hotel buffet', 1);
 INSERT INTO expenses (amount, need_want, date, category, comments, user_id) VALUES (31, 'want', '02-04-2019', 'Dining', 'Thai restaurant', 1);
 INSERT INTO expenses (amount, need_want, date, category, comments, user_id) VALUES (32, 'want', '09-04-2019', 'Dining', 'Japanese restaurant', 1);
@@ -127,9 +126,6 @@ INSERT INTO expenses (amount, need_want, date, category, comments, user_id) VALU
 INSERT INTO expenses (amount, need_want, date, category, comments, user_id) VALUES (100, 'want', '28-11-2018', 'Dining', 'Hotel buffet', 1);
 INSERT INTO expenses (amount, need_want, date, category, user_id) VALUES (41, 'need', '01-06-2019', 'Groceries', 1);
 INSERT INTO expenses (amount, need_want, date, category, user_id) VALUES (41, 'need', '08-06-2019', 'Groceries', 1);
-INSERT INTO expenses (amount, need_want, date, category, user_id) VALUES (41, 'need', '15-06-2019', 'Groceries', 1);
-INSERT INTO expenses (amount, need_want, date, category, user_id) VALUES (41, 'need', '22-06-2019', 'Groceries', 1);
-INSERT INTO expenses (amount, need_want, date, category, user_id) VALUES (41, 'need', '29-06-2019', 'Groceries', 1);
 INSERT INTO expenses (amount, need_want, date, category, user_id) VALUES (41, 'need', '01-05-2019', 'Groceries', 1);
 INSERT INTO expenses (amount, need_want, date, category, user_id) VALUES (41, 'need', '08-05-2019', 'Groceries', 1);
 INSERT INTO expenses (amount, need_want, date, category, user_id) VALUES (41, 'need', '15-05-2019', 'Groceries', 1);
@@ -146,7 +142,7 @@ INSERT INTO expenses (amount, need_want, date, category, user_id) VALUES (41, 'n
 INSERT INTO expenses (amount, need_want, date, category, user_id) VALUES (41, 'need', '22-03-2019', 'Groceries', 1);
 INSERT INTO expenses (amount, need_want, date, category, user_id) VALUES (41, 'need', '29-03-2019', 'Groceries', 1);
 INSERT INTO expenses (amount, need_want, date, category, user_id) VALUES (50, 'need', '01-06-2019', 'Transport', 1);
-INSERT INTO expenses (amount, need_want, date, category, user_id) VALUES (50, 'need', '14-06-2019', 'Transport', 1);
+INSERT INTO expenses (amount, need_want, date, category, user_id) VALUES (50, 'need', '10-06-2019', 'Transport', 1);
 INSERT INTO expenses (amount, need_want, date, category, user_id) VALUES (50, 'need', '01-04-2019', 'Transport', 1);
 INSERT INTO expenses (amount, need_want, date, category, user_id) VALUES (50, 'need', '14-04-2019', 'Transport', 1);
 INSERT INTO expenses (amount, need_want, date, category, user_id) VALUES (50, 'need', '01-03-2019', 'Transport', 1);
@@ -177,7 +173,7 @@ INSERT INTO expenses (amount, need_want, date, category, user_id) VALUES (60, 'n
 INSERT INTO expenses (amount, need_want, date, category, user_id) VALUES (60, 'need', '01-11-2018', 'Insurance', 1);
 INSERT INTO expenses (amount, need_want, date, category, user_id) VALUES (60, 'need', '01-10-2018', 'Insurance', 1);
 INSERT INTO expenses (amount, need_want, date, category, user_id) VALUES (60, 'need', '01-09-2018', 'Insurance', 1);
-INSERT INTO expenses (amount, need_want, date, category, comments, user_id) VALUES (40, 'need', '27-06-2019', 'Telecommunications', 'mobile', 1);
+INSERT INTO expenses (amount, need_want, date, category, comments, user_id) VALUES (40, 'need', '02-06-2019', 'Telecommunications', 'mobile', 1);
 INSERT INTO expenses (amount, need_want, date, category, comments, user_id) VALUES (40, 'need', '27-04-2019', 'Telecommunications', 'mobile', 1);
 INSERT INTO expenses (amount, need_want, date, category, comments, user_id) VALUES (40, 'need', '27-03-2019', 'Telecommunications', 'mobile', 1);
 INSERT INTO expenses (amount, need_want, date, category, comments, user_id) VALUES (40, 'need', '27-02-2019', 'Telecommunications', 'mobile', 1);
